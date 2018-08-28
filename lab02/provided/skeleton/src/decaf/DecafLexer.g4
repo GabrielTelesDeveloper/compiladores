@@ -20,13 +20,14 @@ RCURLY : '}';
 ID  :
   ('a'..'z' | 'A'..'Z' | '0'..'9');
 
-WS_ : (' ' | '\n' ) -> skip;
+WS_ : (' ' | '\n') -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
 
-CHAR : '\''  (ESC|ID) '\'';
+CHAR : '\'' (ESC|ID) '\'';
 STRING : '"' (ESC|ID)* '"';
 
 fragment
-ESC :  '\\' ('n'|'"');
+ESC :  '\\' ('n'|'"' |'t'|'\\');
+
 
