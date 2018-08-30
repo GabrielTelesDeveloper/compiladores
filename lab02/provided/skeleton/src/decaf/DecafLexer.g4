@@ -18,21 +18,23 @@ LCURLY : '{';
 RCURLY : '}';
 
 
+ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
+WS : [ \t\r\n]+ -> skip;
+SL_COMMENT : '//' (~'\n')*'\n' -> skip;
+CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
+STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
+INTLITERAL : NUM(NUM)*~'x';
+HEXLITERAL : '0x'(NUM|HEXDIGIT)+;
 
-WS_ : (' ' | '\n') -> skip;
 
-SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+fragment ESC : '\\'('n'|'"'|'t'|'\\');
+fragment LETRAS : ('a'..'z'|'A'..'Z');
+fragment NUM  : ('0'..'9');
+fragment SIMBOLOS : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
+fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
+fragment HEXDIGIT : ('a'..'f'|'A'..'F');
 
-CHAR : '\'' (ESC|ID) '\'';
-STRING : '"' (ESC|ID)* '"';
-INTLITERAL : '0x'(ID)+;
 
-
-fragment
-ESC :  '\\' ('n'|'"'|'t'|'\\');
-
-fragment
-ID  : ('a'..'z'|'A'..'Z'|'0'..'9');
 
 
 
