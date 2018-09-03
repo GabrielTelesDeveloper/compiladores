@@ -38,6 +38,14 @@ DEFINE: '=';
 E:'&&';
 OU:'||';
 
+LCOL:'[';
+RCOL:']';
+LPAR:'(';
+RPAR:')';
+
+VIRGULA : ',';
+DPONTOS: ':';
+PVIRGULA : ';';
 
 INT: 'int';
 BOOLEAN: 'boolean';
@@ -52,6 +60,7 @@ VOID: 'void';
 
 WS : [ \t\r\n]+ -> skip;
 SL_COMMENT : '//' (~'\n')*'\n' -> skip;
+
 ID : (LETRAS|'_')(LETRAS|NUM|'_')*;
 CHAR : '\'' (ESC|LETRAS|NUM|OUTROS) '\'';
 STRING : '"'(LETRAS|NUM|SIMBOLOS)* '"';
@@ -64,4 +73,3 @@ fragment NUM  : ('0'..'9');
 fragment SIMBOLOS : (' '|'!'|'"'|'#'|'$'|'%'|'&'|'\\\''|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~'|'\t'|'\\'|'\"');
 fragment OUTROS: (' '|'!'|'#'|'$'|'%'|'&'|'('|')'|'*'|'+'|','|'-'|'.'|'/'|':'|';'|'<'|'='|'>'|'?'|'@'|'['|']'|'^'|'_'|'´'|'`'|'{'|'|'|'}'|'~');
 fragment HEXDIGIT : ('a'..'f'|'A'..'F');
-
