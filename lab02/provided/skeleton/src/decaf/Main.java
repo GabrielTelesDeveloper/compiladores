@@ -47,7 +47,8 @@ class Main {
 		        				type = " INTLITERAL";
 		        				break;
 						case DecafLexer.BOOLEANLITERAL:
-							type = " BOOLEANLITERAL";
+								type = " BOOLEANLITERAL";
+								break;
 		        			}
 		        			System.out.println (token.getLine() + type + " " + text);
 		        		}
@@ -73,4 +74,3 @@ class Main {
         }
     }
 }
-
