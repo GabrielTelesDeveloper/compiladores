@@ -14,11 +14,13 @@ program: CLASS PROGRAM LCURLY field_decl* method_decl* RCURLY EOF;
 
 field_decl: type id (VIRGULA type id)* PVIRGULA;
 
-method_decl: (type|VOID) ID LPAR (type ID (VIRGULA type ID)*)? RPAR block;
+decl: type ID;
+
+method_decl: (type|VOID) ID LPAR (decl (VIRGULA decl)*)? RPAR block;
 
 block: LCURLY var_decl* statement* RCURLY;
 
-var_decl: (type ID)* PVIRGULA;
+var_decl: type ID (VIRGULA ID)* PVIRGULA;
 
 type: INT|BOOLEAN;
 
@@ -61,7 +63,7 @@ literal : int_literal | CHAR | BOOLEANLITERAL;
 
 int_literal : INTLITERAL | HEXLITERAL;
 
-id : ID | ID LCOL? int_literal+ RCOL?;
+id : ID | ID LCOL? int_literal RCOL?;
 
 
 
